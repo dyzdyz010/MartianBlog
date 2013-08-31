@@ -1,0 +1,145 @@
+body {
+	font-family: 'Asap', sans-serif;
+	color: #2e3641;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+a {
+	transition: all 0.1s ease;
+	-webkit-transition: all 0.1s ease;
+	-moz-transition: all 0.1s ease;
+}
+
+input {
+	font-family: 'Bree Serif', sans-serif;
+	font-size: 1.2em;
+	width: 100%;
+	height: 2.3em;
+	border: 1px solid #dae4eb;
+	text-indent: 0.7em;
+	color: #9eb2c0;
+}
+
+::-webkit-input-placeholder {
+  color: #dae4eb;
+}
+
+input:-moz-placeholder {
+  color: #dae4eb;
+}
+
+input:focus, textarea:focus {
+	outline: none;
+}
+
+textarea {
+	width: 100%;
+	height: 300px;
+	font-family: 'Asap', sans-serif;
+	font-size: 1.2em;
+	border: 1px solid #dae4eb;
+	color: #9eb2c0;
+	resize: none;
+}
+
+/* Customize Bootstrap */
+.glyphicon {
+	top: 0;
+}
+
+.nav > li > a {
+	padding: 20px;
+}
+
+.nav-stacked > li + li {
+	margin-top: 0;
+}
+
+/* Sidebar */
+.sidebar {
+	background-color: #2e3641;
+	font-size: 1.3em;
+	height: 100%;
+}
+
+.sidebar a {
+	color: #c1cfd9;
+}
+
+.sidebar a:hover {
+	color: #2e3641;
+}
+
+.sidebar .active {
+	background-color: #ffffff;
+	color: #2e3641;
+}
+
+/* Editor */
+#editor {
+	margin-top: 20px;
+}
+
+#button-bar {
+	height: 3em;
+}
+
+#button-bar {
+	background-color: #2e3641;
+}
+
+#button-bar .button-row {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 0;
+	height: 100%;
+}
+
+#button-bar .button-row li {
+	height: 100%;
+	padding: 0;
+	display: inline-block;
+	border-right: 1px solid #3a414d;}
+
+#button-bar .button-row a {
+	height: 100%;
+	color: #c1cfd9;
+	padding: 13px 14px;
+}
+
+#button-bar .button-row a:hover {
+	text-decoration: none;
+	background-color: #eee;
+}
+
+#editor textarea.edit {
+	border-top: none;
+}
+
+/* Article configurations */
+.panel-group {
+	margin-top: 20px;
+}
+
+.panel-group, 
+.panel-group .panel {
+	border-radius: 0;
+	border: none;
+	box-shadow: none;
+}
+
+.panel-group .panel .panel-heading {
+	background-color: #c1cfd9;
+	color: #fff;
+	border-radius: 0;
+	border: none;
+	height: 42px;
+}
+
+.panel-group .panel-heading+.panel-collapse .panel-body {
+	border: 1px solid #dae4eb;
+	border-top: none;
+}
