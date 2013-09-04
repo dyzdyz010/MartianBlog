@@ -13,22 +13,64 @@ a {
 	-moz-transition: all 0.1s ease;
 }
 
-input {
+input[type="text"], 
+input[type="email"], 
+input[type="date"], 
+input[type="password"] {
 	font-family: 'Bree Serif', sans-serif;
 	font-size: 1.2em;
 	width: 100%;
 	height: 2.3em;
 	border: 1px solid #dae4eb;
 	text-indent: 0.7em;
-	color: #9eb2c0;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+.checkbox {
+	padding-left: 10px;
+	margin-bottom: 0px;
+}
+
+.checkbox label {
+	margin-bottom: 15px;
+	display: inline-block;
+	cursor: pointer;
+	color: #b8c7d1;
+	position: relative;
+	padding-left: 25px;
+	margin-right: 15px;
+	font-size: 1em;
+}
+
+.checkbox label:before {
+	content: "";
+	display: inline-block;
+
+	width: 1.3em;
+	height: 1.3em;
+
+	margin-left: -7px;
+	position: absolute;
+	left: 0;
+	bottom: 0px;
+	border: 1px solid #dae4eb;
+	font-size: 1.3em;
+}
+
+input[type="checkbox"]:checked + label:before {
+	content: url("../img/checkmark.png");
+	color: #f3f3f3;
 }
 
 ::-webkit-input-placeholder {
-  color: #dae4eb;
+	color: #dae4eb;
 }
 
 input:-moz-placeholder {
-  color: #dae4eb;
+	color: #dae4eb;
 }
 
 input:focus, textarea:focus {
@@ -102,7 +144,8 @@ textarea {
 	height: 100%;
 	padding: 0;
 	display: inline-block;
-	border-right: 1px solid #3a414d;}
+	border-right: 1px solid #3a414d;
+}
 
 #button-bar .button-row a {
 	height: 100%;
