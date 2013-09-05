@@ -4,12 +4,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type MainController struct {
+type AdminController struct {
 	beego.Controller
 }
 
-func (this *MainController) Get() {
+func (this *AdminController) Get() {
 	this.Data["Website"] = "beego.me"
 	this.Data["Email"] = "astaxie@gmail.com"
-	this.TplNames = "index.tpl"
+	this.TplNames = "admin/index.html"
 }

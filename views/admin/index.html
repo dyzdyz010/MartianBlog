@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="martianblog">
+<head>
+	<title>Admin|Martian Blog</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<link href="http://cdn.staticfile.org/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+	<!-- Date Picker styles -->
+	<link href="static/css/datepicker.css" rel="stylesheet" type="text/css">
+	<!-- Custom styles -->
+	<link href="static/css/custom-admin.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="sidebar" data-spy="affix" data-offset-top="0">
+		<ul class="nav nav-stacked">
+			<li><a href="#" class="glyphicon glyphicon-dashboard"></a></li>
+			<li><a href="#" class="glyphicon glyphicon-file active"></a></li>
+			<li><a href="#" class="glyphicon glyphicon-picture"></a></li>
+			<li><a href="#" class="glyphicon glyphicon-link"></a></li>
+			<li><a href="#" class="glyphicon glyphicon-comment"></a></li>
+			<li><a href="#" class="glyphicon glyphicon-user"></a></li>
+		</ul>
+	</div>
+
+	<div class="container" ng-view>
+	</div>
+
+
+	<!-- Angular.js scripts -->
+	<script src="http://cdn.staticfile.org/angular.js/1.1.5/angular.min.js"></script>
+	<script src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
+	<script src="static/js/admin/app.js"></script>
+	<script src="static/js/admin/controllers.js"></script>
+	<script src="http://cdn.staticfile.org/angular.js/1.1.5/angular-resource.min.js"></script>
+	<script src="http://cdn.staticfile.org/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="static/js/bootstrap-datepicker.js"></script>
+</body>
+</html>
