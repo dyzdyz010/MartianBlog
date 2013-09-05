@@ -156,6 +156,7 @@ textarea {
 #button-bar .button-row a:hover {
 	text-decoration: none;
 	background-color: #eee;
+	color: #2e3641;
 }
 
 #editor textarea.edit {
