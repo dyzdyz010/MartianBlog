@@ -9,7 +9,5 @@ type AdminController struct {
 }
 
 func (this *AdminController) Get() {
-	this.Data["Website"] = "beego.me"
-	this.Data["Email"] = "astaxie@gmail.com"
 	this.TplNames = "admin/index.html"
 }

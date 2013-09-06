@@ -1,9 +1,5 @@
 'use strict'
 
-// $(document).ready(function () {
-// 	$('#datepicker').datepicker();
-// });
-
 angular.module('MartianBlog', ['markdownFilters']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
