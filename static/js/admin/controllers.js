@@ -1,5 +1,5 @@
 'use strict'
 
 function NewArticleCtrl ($scope) {
-	// body...
+	$scope.article = {};
 }

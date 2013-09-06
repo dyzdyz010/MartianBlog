@@ -80,11 +80,13 @@ input:focus, textarea:focus {
 textarea {
 	width: 100%;
 	height: 300px;
-	font-family: 'Asap', sans-serif;
-	font-size: 1.2em;
+	font-family: 'Menlo', sans-serif;
+	font-size: 1.0em;
+	line-height: 1.1em;
 	border: 1px solid #dae4eb;
 	color: #9eb2c0;
 	resize: none;
+	padding: 5px;
 }
 
 /* Customize Bootstrap */
@@ -163,19 +165,26 @@ textarea {
 	border-top: none;
 }
 
-/* Article configurations */
-.panel-group {
+/* Preview Div */
+#preview {
+	margin-top: 20px;
+	padding: 5px;
+	border: 2px dashed #dae4eb;
+}
+
+/* Article configurations sidebar */
+#configuration {
 	margin-top: 20px;
 }
 
-.panel-group, 
-.panel-group .panel {
+#configuration, 
+#configuration .panel {
 	border-radius: 0;
 	border: none;
 	box-shadow: none;
 }
 
-.panel-group .panel .panel-heading {
+#configuration .panel .panel-heading {
 	background-color: #c1cfd9;
 	color: #fff;
 	border-radius: 0;
@@ -183,7 +192,24 @@ textarea {
 	height: 42px;
 }
 
-.panel-group .panel-heading+.panel-collapse .panel-body {
+#configuration .panel-heading+.panel-collapse .panel-body {
 	border: 1px solid #dae4eb;
 	border-top: none;
+}
+
+/* Article styles */
+.article {
+	font-family: 'Asap', sans-serif;
+	font-size: 1.1em;
+	color: #2e3641;
+	line-height: 1.1em;
+}
+
+.article h1, 
+.article h2, 
+.article h3, 
+.article h4, 
+.article h5, 
+.article h6 {
+	margin-top: 10px;
 }
