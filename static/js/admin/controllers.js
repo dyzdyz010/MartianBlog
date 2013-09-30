@@ -5,4 +5,8 @@
 function NewArticleCtrl ($scope) {
 	$scope.article = {};
 	$('#datepicker').datepicker();
+
+	$scope.submit = function () {
+		
+	}
 }

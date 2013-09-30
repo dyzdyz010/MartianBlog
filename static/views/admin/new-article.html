@@ -1,50 +1,52 @@
-		<h3>Add New Post</h3>
-		<div class="row">
-			<div class="col-lg-9">
-				<input type="text" placeholder="Enter title here" ng-model="article.title">
-				<div id="editor">
-					<div id="button-bar">
-						<ul class="button-row">
-							<li>
-								<a href="#" class="glyphicon glyphicon-bold"></a></li><li>
-								<a href="#" class="glyphicon glyphicon-italic"></a></li><li>
-								<a href="#" class="glyphicon glyphicon-link"></a>
-							</li>
-						</ul>
-					</div>
-					<textarea class="edit" ng-model="article.content"></textarea>
-				</div>
-				<div id="preview" class="article" ng-bind-html-unsafe="article.content | markdown"></div>
+<h3>Add New Post</h3>
+<div class="row">
+	<div class="col-lg-9">
+		<input type="text" placeholder="Enter title here" ng-model="article.title">
+		<div id="editor">
+			<div id="button-bar">
+				<ul class="button-row">
+					<li>
+						<a href="#" class="glyphicon glyphicon-bold"></a></li><li>
+						<a href="#" class="glyphicon glyphicon-italic"></a></li><li>
+						<a href="#" class="glyphicon glyphicon-link"></a>
+					</li>
+				</ul>
 			</div>
-			<div class="col-lg-3">
-				<input type="text" id="datepicker" placeholder="Select a date" data-date-format="dd-mm-yyyy">
-				<div id="configuration">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">Category</h4>
-						</div>
-						<div id="categories" class="panel-collapse">
-							<div class="panel-body">
-								<div class="checkbox">
-									<input id="check1" type="checkbox" name="check" value="check1">
-									<label for="check1">Display as dropdown</label>
-									<input id="check2" type="checkbox" name="check" value="check2">
-									<label for="check2">Display as dropdown</label>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">Tags</h4>
-						</div>
-						<div id="Tags" class="panel-collapse">
-							<div class="panel-body">
-								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-							</div>
+			<textarea class="edit" ng-model="article.content"></textarea>
+		</div>
+		<div id="preview" class="article" ng-bind-html-unsafe="article.content | markdown"></div>
+	</div>
+
+	<!-- Article configurations - date, category, tags, etc. -->
+	<div class="col-lg-3">
+		<input type="text" id="datepicker" placeholder="Select a date" data-date-format="dd-mm-yyyy" ng-model="article.date" readonly>
+		<div id="configuration">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Category</h4>
+				</div>
+				<div id="categories" class="panel-collapse">
+					<div class="panel-body">
+						<div class="checkbox">
+							<input id="check1" type="checkbox" name="check" value="check1">
+							<label for="check1">Display as dropdown</label>
+							<input id="check2" type="checkbox" name="check" value="check2">
+							<label for="check2">Display as dropdown</label>
 						</div>
 					</div>
 				</div>
-
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Tags</h4>
+				</div>
+				<div id="Tags" class="panel-collapse">
+					<div class="panel-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+					</div>
+				</div>
 			</div>
 		</div>
+
+	</div>
+</div>
