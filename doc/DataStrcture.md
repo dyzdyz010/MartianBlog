@@ -34,4 +34,4 @@ MartianBlog数据结构
 
 `email` —— 邮箱
 
-`portrait` —— 头像
+**注：**用户头像使用Gravatar。

@@ -4,7 +4,7 @@ MartianBlog功能架构
 前台
 ---
 
-前台共有两个页面 —— `首页`，`归档`
+前台共有两个页面 —— `首页`，`文章详情`
 
 1. 首页
 
@@ -20,14 +20,19 @@ MartianBlog功能架构
 		+ author
 	+ footer
 	
-2. 归档
+2. 文章详情
 
-	归档页显示符合搜索条件的所有文章的完整列表。从上到下依次是：
+	文章详情页显示选定文章的详细内容，已经评论模块。从上到下依次是：
 	
 	+ logo
-	+ Archive(title)
-	+ term(Date:[] / Tag:[])
+	+ title
+	+ subtitle
 	+ article
+		+ title
+		+ date + tags
+		+ content
+		+ author
+	+ discussion
 	+ footer
 	
 

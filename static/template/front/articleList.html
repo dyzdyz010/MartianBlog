@@ -1,0 +1,5 @@
+<div class="content" ng-repeat="article in articles">
+	<h2><a ui-sref="front.detail({articleId: article.Id})">{{article.Title}}</a></h2>
+	<h5>{{article.Date}} | Tags: {{article.Tags}} | Author: {{article.Author}}</h5>
+	<p>{{article.Content}}</p>
+</div>

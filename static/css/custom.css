@@ -1,2 +1,23 @@
 body {
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
+
+header {
+  margin-top: 70px;
+  text-align: center; }
+  header h1 {
+    margin-top: 10px;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    font-size: 3em; }
+  header h2 {
+    margin-top: 0; }
+  header img {
+    border-radius: 50%; }
+
+.content {
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 0 2em;
+  max-width: 800px; }
+  .content h2, .content h5 {
+    text-align: center; }
