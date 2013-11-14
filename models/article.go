@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"labix.org/v2/mgo/bson"
 )
 
@@ -21,8 +20,6 @@ func AllArticles() []Article {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(articles)
-	// c.Insert(bson.M{"id": 226, "title": "Hello2"})
 
 	return articles
 }
