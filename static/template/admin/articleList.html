@@ -1,0 +1,21 @@
+<table class="pure-table pure-table-horizontal">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Tags</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="article in articles">
+            <td>{{article.Id}}</td>
+            <td><a ui-sref="admin.article({articleId: article.Id})">{{article.Title}}</a></td>
+            <td>{{article.Date}}</td>
+            <td>{{article.Author}}</td>
+            <td>{{article.Tags}}</td>
+        </tr>
+    </tbody>
+</table>

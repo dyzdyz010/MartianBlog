@@ -16,7 +16,7 @@ type Article struct {
 
 func AllArticles() []Article {
 	articles := []Article{}
-	err := c_articles.Find(bson.M{"id": 226}).All(&articles)
+	err := c_articles.Find(bson.M{}).All(&articles)
 	if err != nil {
 		panic(err)
 	}
@@ -27,6 +27,16 @@ func AllArticles() []Article {
 func ArticleById(id int64) Article {
 	article := Article{}
 	err := c_articles.Find(bson.M{"id": id}).One(&article)
+	if err != nil {
+		panic(err)
+	}
+
+	return article
+}
+
+func ArticleByTitle(title string) Article {
+	article := Article{}
+	err := c_articles.Find(bson.M{"title": title}).One(&article)
 	if err != nil {
 		panic(err)
 	}
