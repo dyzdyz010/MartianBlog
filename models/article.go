@@ -24,6 +24,16 @@ func AllArticles() []Article {
 	return articles
 }
 
+func ArticlesByStatus(status string) []Article {
+	articles := []Article{}
+	err := c_articles.Find(bson.M{"status": status}).All(&articles)
+	if err != nil {
+		panic(err)
+	}
+
+	return articles
+}
+
 func ArticleById(id int64) Article {
 	article := Article{}
 	err := c_articles.Find(bson.M{"id": id}).One(&article)

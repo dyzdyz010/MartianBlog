@@ -1,4 +1,4 @@
-<div class="content" ng-repeat="article in articles">
+<div class="content" ng-repeat="article in articles | orderBy:'Date':true">
 	<h2><a ui-sref="front.detail({articleId: article.Id})">{{article.Title}}</a></h2>
 	<h5>{{article.Date | calendar}} | Tags: {{article.Tags}} | Author: {{article.Author}}</h5>
 	<p>{{article.Content}}</p>

@@ -11,7 +11,14 @@ type FrontController struct {
 }
 
 func (this *FrontController) Articles() {
-	articles := models.AllArticles()
+	var articles []models.Article
+
+	if status := this.GetString("status"); status != "" {
+		articles = models.ArticlesByStatus(status)
+	} else {
+		articles = models.AllArticles()
+	}
+
 	fmt.Println(articles)
 	this.Data["json"] = articles
 	this.ServeJson()

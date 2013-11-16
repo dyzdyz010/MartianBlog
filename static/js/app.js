@@ -27,6 +27,7 @@ app.config(['$stateProvider', function ($stateProvider) {
 
 		state('admin', {
 			abstract: true,
+			url: "/admin",
 			templateUrl: "static/template/admin/template.html",
 			controller: "AdminCtrl"
 		}).

@@ -13,7 +13,10 @@ function FrontCtrl ($scope, $http, $state, $rootScope) {
 }
 
 function ArticleListCtrl ($scope, $http) {
-	$http.get('/articles').success(function (data) {
+	$http.get('/articles', {params: {status: "published"}}).success(function (data) {
+		for (var i in data) {
+			data[i].Date = moment(data[i].Date, 'YYYY-MM-DD');
+		}
 		$scope.articles = data;
 	});
 }
@@ -43,8 +46,14 @@ function AdminArticleListCtrl ($scope, $http) {
 }
 
 function AdminArticleEditCtrl ($scope, $http, $stateParams) {
-	console.log('ArticleDetailCtrl');
+	marked.setOptions({
+		highlight: function (code, lang) {
+			return hljs.highlight(lang, code).value;
+		}
+	});
+	console.log('AdminArticleEditCtrl');
 	if ($stateParams.articleId != undefined) {
+		console.log($stateParams.articleId);
 		$http.get('/article', {params: {id: $stateParams.articleId}}).success(function (data) {
 			$scope.article = data
 		});

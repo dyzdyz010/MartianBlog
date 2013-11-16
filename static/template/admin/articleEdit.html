@@ -1,2 +1,12 @@
-<input type="text" ng-model="article.Title">
-<textarea ng-model="article.Content"></textarea>
+<div class="pure-g-r">
+	<form class="pure-u-1" novalidate>
+		<input class="pure-u-1" type="text" ng-model="article.Title" placeholder="Title">
+		<div class="pure-u-3-5">
+			<textarea class="pure-u-1" ng-model="article.Content" placeholder="Content"></textarea>
+			<div class="pure-u-1" ng-bind-html="article.Content | markdown"></div>
+		</div>
+		<div class="pure-u-1-5">
+			<input class="pure-u-1" type="text" ng-model="article.Date" placeholder="Date(Optional)">
+		</div>
+	</form>
+</div>
