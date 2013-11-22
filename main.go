@@ -9,6 +9,7 @@ func main() {
 	beego.Router("/", &controllers.DefaultController{})
 	beego.Router("/articles", &controllers.FrontController{}, "get:Articles")
 	beego.Router("/article", &controllers.FrontController{}, "get:Article")
-	beego.Router("/admin", &controllers.AdminController{})
+	beego.Router("/admin/post/new", &controllers.AdminController{}, "post:PostNew")
+	beego.Router("/admin/post/update", &controllers.AdminController{}, "post:PostUpdate")
 	beego.Run()
 }
