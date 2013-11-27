@@ -11,11 +11,11 @@
 
     <tbody>
         <tr ng-repeat="article in articles">
-            <td>{{article.Id}}</td>
-            <td><a ui-sref="admin.article({articleId: article.Id})">{{article.Title}}</a></td>
-            <td>{{article.Date}}</td>
-            <td>{{article.Author}}</td>
-            <td>{{article.Tags}}</td>
+            <td>{{article.id}}</td>
+            <td><a ui-sref="admin.article({articleId: article.id})">{{article.title}}</a></td>
+            <td>{{article.date}}</td>
+            <td>{{article.author}}</td>
+            <td>{{article.tags}}</td>
         </tr>
     </tbody>
 </table>

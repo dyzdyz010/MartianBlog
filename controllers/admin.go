@@ -18,6 +18,11 @@ func (this *AdminController) PostNew() {
 		panic(err)
 	}
 	fmt.Println(article)
+	a := models.ArticleByTitle(article.Title)
+	if a != nil {
+
+	}
+
 	this.ServeJson()
 }
 

@@ -1,16 +1,16 @@
 <div class="pure-g-r">
 	<form class="pure-u-1" novalidate>
-		<input class="pure-u-1" type="text" ng-model="article.Title" placeholder="Title" required>
+		<input class="pure-u-1" type="text" ng-model="article.title" placeholder="Title" required>
 		<div class="pure-u-3-5">
-			<textarea class="pure-u-1" ng-model="article.Content" placeholder="Content"></textarea>
-			<div class="pure-u-1" ng-bind-html="article.Content | markdown"></div>
+			<textarea class="pure-u-1" ng-model="article.content" placeholder="Content" required></textarea>
+			<div class="pure-u-1" ng-bind-html="article.content | markdown"></div>
 		</div>
 		<div class="pure-u-1-5">
-			<input class="pure-u-1" type="text" ng-model="article.Date" placeholder="Date(Optional)">
-			<input class="pure-u-1" type="text" ng-model="article.Tags" placeholder="Tags">
+			<input class="pure-u-1" type="text" ng-model="article.date" placeholder="Date(YYYY-MM-DD, Optional)">
+			<input class="pure-u-1" type="text" ng-model="article.tags" placeholder="Tags(Optional)">
 			<div class="pure-u-1">
-				<button class="pure-button" ng-click="draft(article)">Save Draft</button>
-				<button class="pure-button" ng-click="post(article)">Post</button>
+				<button class="pure-button" ng-click="draft()">Save Draft</button>
+				<button class="pure-button" ng-click="post()">Post</button>
 			</div>
 		</div>
 	</form>

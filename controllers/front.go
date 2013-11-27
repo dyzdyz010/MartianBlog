@@ -25,10 +25,8 @@ func (this *FrontController) Articles() {
 }
 
 func (this *FrontController) Article() {
-	id, err := this.GetInt("id")
-	if err != nil {
-		panic(err)
-	}
+	id := this.GetString("id")
+
 	this.Data["json"] = models.ArticleById(id)
 	this.ServeJson()
 }

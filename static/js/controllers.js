@@ -16,7 +16,7 @@ function ArticleListCtrl ($scope, $http) {
 	$http.get('/articles', {params: {status: "published"}}).success(function (data) {
 		console.log(data);
 		for (var i in data) {
-			data[i].Date = moment(data[i].Date, 'YYYY-MM-DD');
+			data[i].date = moment(data[i].date, 'YYYY-MM-DD');
 		}
 		$scope.articles = data;
 	});
@@ -67,12 +67,13 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams) {
 		postUrl = postUrl + '/new';
 	}
 
-	$scope.draft = function (article) {
-		article.Status = 'draft';
-		article.Date = moment().format('YYYY-MM-DD');
+	$scope.draft = function () {
+		var article = $scope.article;
+		console.log(article);
+		article.status = 'draft';
+		article.date = moment().format();
 		if (true) {
-			article.Id = 1000;
-			article.Author = 'DYZ';
+			article.author = 'DYZ';
 			console.log(article);
 			$http.post('/admin/post/new', article).success(function (data, status) {
 				console.log(status);
@@ -80,13 +81,11 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams) {
 		};
 	};
 
-	$scope.post = function (article) {
-		article.Status = 'published';
+	$scope.post = function () {
+		article.status = 'published';
 	}
 
 	function dateValid (date) {
 		return date != '' && moment(date, 'YYYY-MM-DD').isValid() || date == '';
 	}
-
-	console.log(moment('YYYY-MM-DD'));
 }
