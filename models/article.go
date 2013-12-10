@@ -17,7 +17,7 @@ type Article struct {
 
 func AllArticles() []Article {
 	articles := []Article{}
-	err := c_articles.Find(bson.M{"_id": bson.ObjectIdHex("5281b83afbb7f35cb62d0834")}).All(&articles)
+	err := c_articles.Find(bson.M{}).All(&articles)
 	if err != nil {
 		panic(err)
 	}
@@ -57,12 +57,11 @@ func ArticleByTitle(title string) *Article {
 }
 
 func AddArticle(article Article) string {
-	err := c_articles.Insert(article)
-	if err != nil {
-		panic(err)
-	}
+	article.Id = bson.NewObjectId()
+	// err := c_articles.Insert(article)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	a := ArticleByTitle(article.Title)
-
-	return a.Id.Hex()
+	return article.Id.Hex()
 }

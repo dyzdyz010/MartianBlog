@@ -18,11 +18,9 @@ func (this *AdminController) PostNew() {
 		panic(err)
 	}
 	fmt.Println(article)
-	a := models.ArticleByTitle(article.Title)
-	if a != nil {
+	id := models.AddArticle(article)
 
-	}
-
+	this.Data["json"] = Msg{Code: 200, Data: id}
 	this.ServeJson()
 }
 

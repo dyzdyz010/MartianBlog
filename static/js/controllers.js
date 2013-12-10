@@ -2,14 +2,9 @@
 
 // Controllers
 
-function FrontCtrl ($scope, $http, $state, $rootScope) {
+function FrontCtrl ($scope, $http, $state) {
 	$scope.title = 'Moonlightter';
 	$scope.subtitle = "This is subtitle.";
-
-	// if ($state.current.name == 'front') {
-	// 	console.log('This is front state, prepare to front.list state.');
-	// 	$state.transitionTo('front.list');
-	// }
 }
 
 function ArticleListCtrl ($scope, $http) {
@@ -29,11 +24,8 @@ function ArticleDetailCtrl ($scope, $http, $stateParams) {
 	});
 }
 
-function AdminCtrl ($scope, $http, $state) {
-	if ($state.current.name == 'admin') {
-		console.log('This is admin state, prepare to admin.dashboard state.');
-		$state.transitionTo('admin.dashboard');
-	}
+function AdminCtrl ($scope, $http) {
+	
 }
 
 function DashboardCtrl ($scope, $http) {
@@ -46,20 +38,20 @@ function AdminArticleListCtrl ($scope, $http) {
 	});
 }
 
-function AdminArticleEditCtrl ($scope, $http, $stateParams) {
+function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notification) {
 	var postUrl = '/admin/post';
-
 	marked.setOptions({
 		highlight: function (code, lang) {
 			console.log('lang: '+lang+', code: '+code);
 			return (lang == undefined) ? hljs.highlightAuto(code).value : hljs.highlight(lang, code).value;
 		}
 	});
-	console.log('AdminArticleEditCtrl');
+
 	if ($stateParams.articleId != undefined) {
 		console.log($stateParams.articleId);
 		$http.get('/article', {params: {id: $stateParams.articleId}}).success(function (data) {
 			$scope.article = data
+			$scope.date = moment(data.date).format('YYYY-MM-DD');
 		});
 
 		postUrl = postUrl + '/update';
@@ -67,25 +59,49 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams) {
 		postUrl = postUrl + '/new';
 	}
 
+	// Save draft form button action
 	$scope.draft = function () {
 		var article = $scope.article;
 		console.log(article);
 		article.status = 'draft';
-		article.date = moment().format();
-		if (true) {
+		article.date = generateDate($scope.date).format();
+		if (article.date != undefined) {
 			article.author = 'DYZ';
 			console.log(article);
 			$http.post('/admin/post/new', article).success(function (data, status) {
-				console.log(status);
+				console.log(data);
+				if (data.code == 200) {
+					$state.transitionTo('admin.articles');
+					$notification.success('Success', 'Save draft succeed.');
+				} else{
+					$notification.error('Error', 'Something is wrong.');
+				}
 			})
-		};
+		} else {
+
+		}
 	};
 
+	// Post form button action
 	$scope.post = function () {
 		article.status = 'published';
 	}
 
-	function dateValid (date) {
-		return date != '' && moment(date, 'YYYY-MM-DD').isValid() || date == '';
+	var generateDate = function (d) {
+		var date = moment();
+		if (d == undefined || d == '') {
+			return date;
+		}
+
+		var temp = moment(d, 'YYYY-MM-DD', true);
+		if (!temp.isValid()) {
+			return undefined;
+		}
+
+		date.date(temp.date());
+		date.month(temp.month());
+		date.year(temp.year());
+
+		return date;
 	}
 }

@@ -2,7 +2,7 @@
 
 // App Module
 
-var app = angular.module('martianblog', ['ui.router', 'martianblogFilters']);
+var app = angular.module('martianblog', ['ui.router', 'martianblogFilters', 'notifications']);
 app.config(['$stateProvider', function ($stateProvider) {
 	$stateProvider.
 		state('front', {
@@ -26,6 +26,9 @@ app.config(['$stateProvider', function ($stateProvider) {
 		}).
 
 		state('admin', {
+			data: {
+				infoMsg: ''
+			},
 			abstract: true,
 			url: "/admin",
 			templateUrl: "static/template/admin/template.html",

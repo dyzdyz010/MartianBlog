@@ -10,7 +10,7 @@
     </thead>
 
     <tbody>
-        <tr ng-repeat="article in articles">
+        <tr ng-repeat="article in articles | orderBy:'date':true">
             <td>{{article.id}}</td>
             <td><a ui-sref="admin.article({articleId: article.id})">{{article.title}}</a></td>
             <td>{{article.date}}</td>

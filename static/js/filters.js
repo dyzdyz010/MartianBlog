@@ -4,9 +4,9 @@
 
 var filters = angular.module('martianblogFilters', ['ngSanitize']);
 
-filters.filter('calendar', function() {
+filters.filter('timeago', function() {
 	return function (input) {
-		return moment(input, 'YYYY-MM-DD').calendar();
+		return moment(input, 'YYYY-MM-DD').fromNow();
 	};
 });
 
