@@ -2,20 +2,24 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Status</th>
             <th>Title</th>
             <th>Date</th>
             <th>Author</th>
             <th>Tags</th>
+            <th>Delete</th>
         </tr>
     </thead>
 
     <tbody>
         <tr ng-repeat="article in articles | orderBy:'date':true">
             <td>{{article.id}}</td>
+            <td>{{article.status}}</td>
             <td><a ui-sref="admin.article({articleId: article.id})">{{article.title}}</a></td>
             <td>{{article.date}}</td>
             <td>{{article.author}}</td>
             <td>{{article.tags}}</td>
+            <td><a href="" ng-click="delete(article.id)">delete</a></td>
         </tr>
     </tbody>
 </table>

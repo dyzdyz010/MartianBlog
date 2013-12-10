@@ -26,8 +26,32 @@ func (this *AdminController) PostNew() {
 
 func (this *AdminController) PostUpdate() {
 	article := models.Article{}
-	if err := this.ParseForm(&article); err != nil {
+	err := json.Unmarshal(this.Ctx.Input.Body(), &article)
+	if err != nil {
 		panic(err)
 	}
+
+	msg := Msg{}
+	if ok := models.UpdateArticle(article); ok {
+		msg.Code = 200
+	} else {
+		msg.Code = 500
+	}
 	fmt.Println(article)
+	this.Data["json"] = msg
+	this.ServeJson()
+}
+
+func (this *AdminController) PostDelete() {
+	id := this.GetString("id")
+	fmt.Println(id)
+
+	msg := Msg{}
+	if ok := models.DeleteArticle(id); ok {
+		msg.Code = 200
+	} else {
+		msg.Code = 500
+	}
+	this.Data["json"] = msg
+	this.ServeJson()
 }

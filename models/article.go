@@ -65,3 +65,24 @@ func AddArticle(article Article) string {
 
 	return article.Id.Hex()
 }
+
+func UpdateArticle(article Article) bool {
+	err := c_articles.UpdateId(article.Id, article)
+	if err != nil {
+		panic(err)
+		return false
+	}
+
+	return true
+}
+
+func DeleteArticle(idStr string) bool {
+	// id := bson.ObjectIdHex(idStr)
+	// err := c_articles.RemoveId(id)
+	// if err != nil {
+	// 	panic(err)
+	// 	return false
+	// }
+
+	return true
+}

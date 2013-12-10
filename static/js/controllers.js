@@ -25,17 +25,33 @@ function ArticleDetailCtrl ($scope, $http, $stateParams) {
 }
 
 function AdminCtrl ($scope, $http) {
-	
+
 }
 
 function DashboardCtrl ($scope, $http) {
 	
 }
 
-function AdminArticleListCtrl ($scope, $http) {
+function AdminArticleListCtrl ($scope, $http, $notification) {
 	$http.get('/articles').success(function (data) {
 		$scope.articles = data;
 	});
+
+	$scope.delete = function (id) {
+		$http.delete('/admin/post/delete', {params: {id: id}}).success(function (data, status) {
+			if (data.code == 200) {
+				for (var i = 0; i < $scope.articles.length; i++) {
+					var a = $scope.articles[i];
+					if (a.id == id) {
+						$scope.articles.splice(i, 1);
+						$notification.success('Success', 'Delete "' + a.title + '" succeed.');
+						break;
+					}
+				};
+
+			};
+		});
+	};
 }
 
 function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notification) {
@@ -47,7 +63,10 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 		}
 	});
 
-	if ($stateParams.articleId != undefined) {
+	// Check state between admin.new and admin.article
+	var articleNew = $stateParams.articleId == undefined;
+
+	if (!articleNew) {
 		console.log($stateParams.articleId);
 		$http.get('/article', {params: {id: $stateParams.articleId}}).success(function (data) {
 			$scope.article = data
@@ -62,8 +81,8 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 	// Save draft form button action
 	$scope.draft = function () {
 		var article = $scope.article;
-		console.log(article);
 		article.status = 'draft';
+		
 		article.date = generateDate($scope.date).format();
 		if (article.date != undefined) {
 			article.author = 'DYZ';
@@ -85,7 +104,7 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 	// Post form button action
 	$scope.post = function () {
 		article.status = 'published';
-	}
+	};
 
 	var generateDate = function (d) {
 		var date = moment();
@@ -103,5 +122,5 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 		date.year(temp.year());
 
 		return date;
-	}
+	};
 }
