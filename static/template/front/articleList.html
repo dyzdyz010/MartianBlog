@@ -1,5 +1,5 @@
 <div class="content" ng-repeat="article in articles | orderBy:'date':true">
 	<h2><a ui-sref="front.detail({articleId: article.id})">{{article.title}}</a></h2>
 	<h5>{{article.date | timeago}} | Tags: {{article.tags}} | Author: {{article.author}}</h5>
-	<p>{{article.content}}</p>
+	<p ng-bind-html="article.content | markdown"></p>
 </div>

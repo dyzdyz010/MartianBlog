@@ -56,18 +56,12 @@ function AdminArticleListCtrl ($scope, $http, $notification) {
 
 function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notification) {
 	var postUrl = '/admin/post';
-	marked.setOptions({
-		highlight: function (code, lang) {
-			console.log('lang: '+lang+', code: '+code);
-			return (lang == undefined) ? hljs.highlightAuto(code).value : hljs.highlight(lang, code).value;
-		}
-	});
 
 	// Check state between admin.new and admin.article
 	var articleNew = $stateParams.articleId == undefined;
 
 	if (!articleNew) {
-		console.log($stateParams.articleId);
+		// console.log($stateParams.articleId);
 		$http.get('/article', {params: {id: $stateParams.articleId}}).success(function (data) {
 			$scope.article = data
 			$scope.date = moment(data.date).format('YYYY-MM-DD');
@@ -87,7 +81,7 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 		if (article.date != undefined) {
 			article.author = 'DYZ';
 			console.log(article);
-			$http.post('/admin/post/new', article).success(function (data, status) {
+			$http.post(postUrl, article).success(function (data, status) {
 				console.log(data);
 				if (data.code == 200) {
 					$state.transitionTo('admin.articles');
@@ -103,7 +97,25 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 
 	// Post form button action
 	$scope.post = function () {
+		var article = $scope.article;
 		article.status = 'published';
+		article.date = generateDate($scope.date).format();
+
+		if (article.date != undefined) {
+			article.author = 'DYZ';
+			console.log(article);
+			$http.post(postUrl, article).success(function (data, status) {
+				console.log(data);
+				if (data.code == 200) {
+					$state.transitionTo('admin.articles');
+					$notification.success('Success', 'Post succeed.');
+				} else{
+					$notification.error('Error', 'Something is wrong.');
+				}
+			})
+		} else {
+
+		}
 	};
 
 	var generateDate = function (d) {

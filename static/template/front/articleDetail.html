@@ -1,5 +1,5 @@
 <div class="content">
 	<h2>{{article.title}}</h2>
 	<h5>{{article.date | timeago}} | Tags: {{article.tags}} | Author: {{article.author}}</h5>
-	<p>{{article.content}}</p>
+	<p ng-bind-html="article.content | markdown"></p>
 </div>

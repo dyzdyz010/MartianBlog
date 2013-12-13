@@ -58,10 +58,10 @@ func ArticleByTitle(title string) *Article {
 
 func AddArticle(article Article) string {
 	article.Id = bson.NewObjectId()
-	// err := c_articles.Insert(article)
-	// if err != nil {
-	// 	panic(err)
-	// }
+	err := c_articles.Insert(article)
+	if err != nil {
+		panic(err)
+	}
 
 	return article.Id.Hex()
 }
@@ -77,12 +77,12 @@ func UpdateArticle(article Article) bool {
 }
 
 func DeleteArticle(idStr string) bool {
-	// id := bson.ObjectIdHex(idStr)
-	// err := c_articles.RemoveId(id)
-	// if err != nil {
-	// 	panic(err)
-	// 	return false
-	// }
+	id := bson.ObjectIdHex(idStr)
+	err := c_articles.RemoveId(id)
+	if err != nil {
+		panic(err)
+		return false
+	}
 
 	return true
 }

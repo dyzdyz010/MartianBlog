@@ -5,11 +5,11 @@
 var app = angular.module('martianblog', ['ui.router', 'martianblogFilters', 'notifications']);
 app.config(['$stateProvider', function ($stateProvider) {
 	$stateProvider.
-		state('front', {
-			abstract: true,
-			templateUrl: "static/template/front/template.html",
-			controller: "FrontCtrl"
-		}).
+	state('front', {
+		abstract: true,
+		templateUrl: "static/template/front/template.html",
+		controller: "FrontCtrl"
+	}).
 
 		// Article list on index
 		state('front.list', {
@@ -26,9 +26,6 @@ app.config(['$stateProvider', function ($stateProvider) {
 		}).
 
 		state('admin', {
-			data: {
-				infoMsg: ''
-			},
 			abstract: true,
 			url: "/admin",
 			templateUrl: "static/template/admin/template.html",
@@ -57,3 +54,11 @@ app.config(['$stateProvider', function ($stateProvider) {
 			controller: "AdminArticleEditCtrl"
 		});
 }]);
+
+
+marked.setOptions({
+	highlight: function (code, lang) {
+		console.log('lang: '+lang+', code: '+code);
+		return (lang == undefined) ? hljs.highlightAuto(code).value : hljs.highlight(lang, code).value;
+	}
+});
