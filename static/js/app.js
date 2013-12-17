@@ -58,7 +58,8 @@ app.config(['$stateProvider', function ($stateProvider) {
 
 marked.setOptions({
 	highlight: function (code, lang) {
-		console.log('lang: '+lang+', code: '+code);
-		return (lang == undefined) ? hljs.highlightAuto(code).value : hljs.highlight(lang, code).value;
+		var compiledBlock = (lang == undefined) ? hljs.highlightAuto(code) : hljs.highlight(lang, code);
+		
+		return compiledBlock.value;
 	}
 });
