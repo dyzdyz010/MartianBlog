@@ -24,12 +24,20 @@ function ArticleDetailCtrl ($scope, $http, $stateParams) {
 	});
 }
 
-function AdminCtrl ($scope, $http) {
-
+function AdminCtrl ($scope, $http, $state, $rootScope) {
+	console.log($state);
+	$http.get('/admin/user').success(function (data) {
+		if (data.code == 404) {
+			// $state.transitionTo('admin.login');
+			$state.current.data.user = 'Hello?';
+		} else if (data.code == 200) {
+			$state.current.data.user = data.data;
+		}
+	});
 }
 
-function DashboardCtrl ($scope, $http) {
-	
+function DashboardCtrl ($scope, $http, $state) {
+	console.log($state.current.data);
 }
 
 function AdminArticleListCtrl ($scope, $http, $notification) {
@@ -47,9 +55,8 @@ function AdminArticleListCtrl ($scope, $http, $notification) {
 						$notification.success('Success', 'Delete "' + a.title + '" succeed.');
 						break;
 					}
-				};
-
-			};
+				}
+			}
 		});
 	};
 }
@@ -135,4 +142,10 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 
 		return date;
 	};
+}
+
+function AdminLoginCtrl ($scope, $http, $state) {
+	$scope.login = function () {
+		
+	}
 }

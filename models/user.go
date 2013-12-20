@@ -1,6 +1,8 @@
 package models
 
-import ()
+import (
+	"labix.org/v2/mgo/bson"
+)
 
 type User struct {
 	username string
@@ -8,6 +10,12 @@ type User struct {
 	password string
 }
 
-func GetUser(u *User) {
+func GetUserByEmail(email string) *User {
+	u := &User{}
+	err := c_users.Find(bson.M{"email": email}).One(u)
+	if err != nil {
+		panic(err)
+	}
 
+	return u
 }

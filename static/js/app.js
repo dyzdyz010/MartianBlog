@@ -29,7 +29,8 @@ app.config(['$stateProvider', function ($stateProvider) {
 			abstract: true,
 			url: "/admin",
 			templateUrl: "static/template/admin/template.html",
-			controller: "AdminCtrl"
+			controller: "AdminCtrl",
+			data: {"user": {}}
 		}).
 
 		// Admin dashboard page
@@ -52,6 +53,11 @@ app.config(['$stateProvider', function ($stateProvider) {
 			url: "/articles/edit",
 			templateUrl: "static/template/admin/articleEdit.html",
 			controller: "AdminArticleEditCtrl"
+		}).
+		state('admin.login', {
+			url: "/login",
+			templateUrl: "static/template/admin/login.html",
+			controller: "AdminLoginCtrl"
 		});
 }]);
 
@@ -59,7 +65,7 @@ app.config(['$stateProvider', function ($stateProvider) {
 marked.setOptions({
 	highlight: function (code, lang) {
 		var compiledBlock = (lang == undefined) ? hljs.highlightAuto(code) : hljs.highlight(lang, code);
-		
+
 		return compiledBlock.value;
 	}
 });

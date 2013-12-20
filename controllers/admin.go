@@ -55,3 +55,22 @@ func (this *AdminController) PostDelete() {
 	this.Data["json"] = msg
 	this.ServeJson()
 }
+
+func (this *AdminController) UserGet() {
+	msg := Msg{}
+	email := this.GetSession("email")
+	if email == nil {
+		msg.Code = 404
+	} else {
+		user := models.GetUserByEmail(email.(string))
+		if user == nil {
+			msg.Code = 500
+		} else {
+			msg.Code = 200
+			msg.Data = user
+		}
+	}
+
+	this.Data["json"] = msg
+	this.ServeJson()
+}
