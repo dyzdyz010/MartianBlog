@@ -66,9 +66,32 @@ func (this *AdminController) UserGet() {
 		if user == nil {
 			msg.Code = 500
 		} else {
+			user.Password = ""
 			msg.Code = 200
 			msg.Data = user
 		}
+	}
+
+	this.Data["json"] = msg
+	this.ServeJson()
+}
+
+func (this *AdminController) UserLogin() {
+	user := &models.User{}
+	err := json.Unmarshal(this.Ctx.Input.Body(), &user)
+	if err != nil {
+		panic(err)
+	}
+
+	msg := Msg{}
+	u := models.FindUser(user)
+	if u != nil {
+		this.SetSession("email", user.Email)
+		msg.Code = 200
+		u.Password = ""
+		msg.Data = u
+	} else {
+		msg.Code = 403
 	}
 
 	this.Data["json"] = msg

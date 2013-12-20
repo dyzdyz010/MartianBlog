@@ -16,5 +16,6 @@ func main() {
 	beego.Router("/admin/post/update", &controllers.AdminController{}, "post:PostUpdate")
 	beego.Router("/admin/post/delete", &controllers.AdminController{}, "delete:PostDelete")
 	beego.Router("/admin/user", &controllers.AdminController{}, "get:UserGet")
+	beego.Router("/admin/user/login", &controllers.AdminController{}, "post:UserLogin")
 	beego.Run()
 }

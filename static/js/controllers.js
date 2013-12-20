@@ -24,12 +24,10 @@ function ArticleDetailCtrl ($scope, $http, $stateParams) {
 	});
 }
 
-function AdminCtrl ($scope, $http, $state, $rootScope) {
-	console.log($state);
+function AdminCtrl ($scope, $http, $state) {
 	$http.get('/admin/user').success(function (data) {
 		if (data.code == 404) {
-			// $state.transitionTo('admin.login');
-			$state.current.data.user = 'Hello?';
+			$state.transitionTo('admin.login');
 		} else if (data.code == 200) {
 			$state.current.data.user = data.data;
 		}
@@ -145,7 +143,14 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 }
 
 function AdminLoginCtrl ($scope, $http, $state) {
+
 	$scope.login = function () {
-		
+		var user = {email: $scope.user.email, password: $scope.user.password};
+		$http.post('/admin/user/login', user).success(function (data) {
+			if (data.code == 200) {
+				$state.current.data.user = data.user;
+				$state.transitionTo('admin.dashboard');
+			};
+		});
 	}
 }
