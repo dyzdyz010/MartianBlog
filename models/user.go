@@ -13,6 +13,7 @@ type User struct {
 }
 
 func AddUser(user *User) {
+	fmt.Println(user)
 	h := md5.New()
 	h.Write([]byte(user.Password))
 	user.Password = fmt.Sprintf("%x", h.Sum(nil))
@@ -24,6 +25,7 @@ func AddUser(user *User) {
 }
 
 func FindUser(user *User) *User {
+	fmt.Println(user)
 	h := md5.New()
 	h.Write([]byte(user.Password))
 	user.Password = fmt.Sprintf("%x", h.Sum(nil))

@@ -7,18 +7,23 @@ body,
 
 body {
 	background-image: url("/static/img/bg.png");
-	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+a {
+	color: gray;
+	text-decoration: none;
 }
 
 header {
 	margin-top: 70px;
 	text-align: center;
-	color: white;
 	h1 {
 		margin-top: 10px;
 		margin-bottom: 0;
@@ -35,19 +40,19 @@ header {
 }
 
 .content {
-	color: white;
 	margin: 0 auto;
 	margin-top: 50px;
 	padding: 0 2em;
-	max-width: 800px;
-	background-image: url("/static/img/article-border.svg");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	color: white;
+
+	.separator {
+		border-top: 1px dashed white;
+	}
 }
 
 .round {
 	display: inline-block;
+	padding: 20px;
 	background-image: url("/static/img/round-border.svg");
 	-webkit-background-size: cover;
-	padding: 20px;
 }

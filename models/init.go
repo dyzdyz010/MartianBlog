@@ -47,12 +47,9 @@ func readConfig() {
 	if err != nil {
 		panic(err)
 	}
-	h := md5.New()
-	h.Write([]byte(admin.Password))
-	admin.Password = fmt.Sprintf("%x", h.Sum(nil))
 	AddUser(admin)
 
-	h = md5.New()
+	h := md5.New()
 	h.Write([]byte(admin.Email))
 	BlogInfo["avatarhash"] = fmt.Sprintf("%x", h.Sum(nil))
 }

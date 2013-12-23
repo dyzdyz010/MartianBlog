@@ -39,12 +39,18 @@ function AdminCtrl ($scope, $http, $state, $rootScope) {
 	});
 }
 
-function DashboardCtrl ($scope, $http, $state) {
-	console.log($state.parent);
-	console.log($scope);
+function DashboardCtrl ($scope, $http, $state, $rootScope) {
+	console.log($rootScope.user);
+	if ($rootScope.user == undefined) {
+		$state.transitionTo('admin.login');
+	}
 }
 
-function AdminArticleListCtrl ($scope, $http, $notification) {
+function AdminArticleListCtrl ($scope, $http, $notification, $state, $rootScope) {
+	if ($rootScope.user == undefined) {
+		$state.transitionTo('admin.login');
+	}
+
 	$http.get('/articles').success(function (data) {
 		$scope.articles = data;
 	});
@@ -65,7 +71,11 @@ function AdminArticleListCtrl ($scope, $http, $notification) {
 	};
 }
 
-function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notification) {
+function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notification, $rootScope) {
+	if ($rootScope.user == undefined) {
+		$state.transitionTo('admin.login');
+	}
+
 	var postUrl = '/admin/post';
 
 	// Check state between admin.new and admin.article
@@ -152,8 +162,9 @@ function AdminLoginCtrl ($scope, $http, $state, $rootScope) {
 	$scope.login = function () {
 		var user = {email: $scope.user.email, password: $scope.user.password};
 		$http.post('/admin/user/login', user).success(function (data) {
+			console.log(data);
 			if (data.code == 200) {
-				$rootScope.user = data.user;
+				$rootScope.user = data.data;
 				$state.transitionTo('admin.dashboard');
 			};
 		});
