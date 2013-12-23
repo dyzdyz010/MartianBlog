@@ -1,6 +1,8 @@
 package models
 
 import (
+	"crypto/md5"
+	"fmt"
 	"labix.org/v2/mgo/bson"
 )
 
@@ -10,7 +12,22 @@ type User struct {
 	Password string `json:"password"`
 }
 
+func AddUser(user *User) {
+	h := md5.New()
+	h.Write([]byte(user.Password))
+	user.Password = fmt.Sprintf("%x", h.Sum(nil))
+
+	err := c_users.Insert(bson.M{"email": user.Email, "username": user.Username, "password": user.Password})
+	if err != nil {
+		panic(err)
+	}
+}
+
 func FindUser(user *User) *User {
+	h := md5.New()
+	h.Write([]byte(user.Password))
+	user.Password = fmt.Sprintf("%x", h.Sum(nil))
+
 	u := &User{}
 	err := c_users.Find(bson.M{"email": user.Email, "password": user.Password}).One(u)
 	if err != nil {

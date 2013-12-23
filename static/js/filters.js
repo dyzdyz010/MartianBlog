@@ -4,9 +4,10 @@
 
 var filters = angular.module('martianblogFilters', ['ngSanitize']);
 
-filters.filter('timeago', function() {
+filters.filter('calendar', function() {
 	return function (input) {
-		return moment(input, 'YYYY-MM-DD').fromNow();
+		var calendar = moment(input).calendar()
+		return calendar;
 	};
 });
 

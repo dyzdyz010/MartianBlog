@@ -2,16 +2,21 @@
 
 // Controllers
 
-function FrontCtrl ($scope, $http, $state) {
-	$scope.title = 'Moonlightter';
-	$scope.subtitle = "This is subtitle.";
+function FrontCtrl ($scope, $http, $state, $rootScope) {
+	$http.get('/bloginfo').success(function (data) {
+		console.log(data)
+		$scope.title = data.title;
+		$scope.subtitle = data.subtitle;
+		$scope.avatarlink = 'http://www.gravatar.com/avatar/' + data.avatarhash + '?s=100';
+		$rootScope.blog = data
+	});
 }
 
 function ArticleListCtrl ($scope, $http) {
 	$http.get('/articles', {params: {status: "published"}}).success(function (data) {
 		console.log(data);
 		for (var i in data) {
-			data[i].date = moment(data[i].date, 'YYYY-MM-DD');
+			data[i].date = moment(data[i].date);
 		}
 		$scope.articles = data;
 	});
@@ -24,18 +29,19 @@ function ArticleDetailCtrl ($scope, $http, $stateParams) {
 	});
 }
 
-function AdminCtrl ($scope, $http, $state) {
+function AdminCtrl ($scope, $http, $state, $rootScope) {
 	$http.get('/admin/user').success(function (data) {
 		if (data.code == 404) {
 			$state.transitionTo('admin.login');
 		} else if (data.code == 200) {
-			$state.current.data.user = data.data;
+			$rootScope.user = data.data;
 		}
 	});
 }
 
 function DashboardCtrl ($scope, $http, $state) {
-	console.log($state.current.data);
+	console.log($state.parent);
+	console.log($scope);
 }
 
 function AdminArticleListCtrl ($scope, $http, $notification) {
@@ -82,7 +88,7 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 		var article = $scope.article;
 		article.status = 'draft';
 		
-		article.date = generateDate($scope.date).format();
+		article.date = generateDate($scope.date).format('YYYY-MM-DD');
 		if (article.date != undefined) {
 			article.author = 'DYZ';
 			console.log(article);
@@ -104,7 +110,7 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 	$scope.post = function () {
 		var article = $scope.article;
 		article.status = 'published';
-		article.date = generateDate($scope.date).format();
+		article.date = generateDate($scope.date).format('YYYY-MM-DD');
 
 		if (article.date != undefined) {
 			article.author = 'DYZ';
@@ -142,13 +148,12 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 	};
 }
 
-function AdminLoginCtrl ($scope, $http, $state) {
-
+function AdminLoginCtrl ($scope, $http, $state, $rootScope) {
 	$scope.login = function () {
 		var user = {email: $scope.user.email, password: $scope.user.password};
 		$http.post('/admin/user/login', user).success(function (data) {
 			if (data.code == 200) {
-				$state.current.data.user = data.user;
+				$rootScope.user = data.user;
 				$state.transitionTo('admin.dashboard');
 			};
 		});

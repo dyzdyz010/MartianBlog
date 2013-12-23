@@ -1,17 +1,24 @@
 body,
 .pure-g [class *= "pure-u"],
 .pure-g-r [class *= "pure-u"] {
-    /* Set you're content font stack here: */
-    font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+	/* Set you're content font stack here: */
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 body {
-	
+	background-image: url("/static/img/bg.png");
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 header {
 	margin-top: 70px;
 	text-align: center;
+	color: white;
 	h1 {
 		margin-top: 10px;
 		margin-bottom: 0;
@@ -23,12 +30,24 @@ header {
 	}
 	img {
 		border-radius: 50%;
+		vertical-align: top;
 	}
 }
 
 .content {
+	color: white;
 	margin: 0 auto;
 	margin-top: 50px;
 	padding: 0 2em;
 	max-width: 800px;
+	background-image: url("/static/img/article-border.svg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.round {
+	display: inline-block;
+	background-image: url("/static/img/round-border.svg");
+	-webkit-background-size: cover;
+	padding: 20px;
 }

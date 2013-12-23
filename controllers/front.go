@@ -30,3 +30,8 @@ func (this *FrontController) Article() {
 	this.Data["json"] = models.ArticleById(id)
 	this.ServeJson()
 }
+
+func (this *FrontController) BlogInfo() {
+	this.Data["json"] = models.BlogInfo
+	this.ServeJson()
+}
