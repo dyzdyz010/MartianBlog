@@ -3,7 +3,7 @@
 		<input class="pure-u-1" type="text" ng-model="article.title" placeholder="Title" required>
 		<div class="pure-u-3-5">
 			<textarea class="pure-u-1" ng-model="article.content" placeholder="Content" required></textarea>
-			<div class="pure-u-1" ng-bind-html="article.content | markdown"></div>
+			<div class="pure-u-1 content" ng-bind-html="article.content | markdown"></div>
 		</div>
 		<div class="pure-u-1-5">
 			<input class="pure-u-1" type="text" ng-model="date" placeholder="Date(YYYY-MM-DD, Optional)">

@@ -98,7 +98,7 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 		var article = $scope.article;
 		article.status = 'draft';
 		
-		article.date = generateDate($scope.date).format('YYYY-MM-DD');
+		article.date = generateDate($scope.date).format();
 		if (article.date != undefined) {
 			article.author = 'DYZ';
 			console.log(article);
@@ -120,7 +120,7 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 	$scope.post = function () {
 		var article = $scope.article;
 		article.status = 'published';
-		article.date = generateDate($scope.date).format('YYYY-MM-DD');
+		article.date = generateDate($scope.date).format();
 
 		if (article.date != undefined) {
 			article.author = 'DYZ';
