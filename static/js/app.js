@@ -63,7 +63,7 @@ marked.setOptions({
 		if (lang && hljs.LANGUAGES.hasOwnProperty(lang)) {
 			return hljs.highlight(lang, code).value;
 		} else {
-			return code;
+			return hljs.highlightAuto(code).value;
 		}
 	}
 });
