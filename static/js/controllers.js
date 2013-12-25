@@ -5,8 +5,8 @@
 function FrontCtrl ($scope, $http, $state, $rootScope) {
 	$http.get('/bloginfo').success(function (data) {
 		console.log(data)
-		$scope.title = data.title;
-		$scope.subtitle = data.subtitle;
+		$rootScope.title = $scope.title = data.title;
+		$rootScope.subtitle = $scope.subtitle = data.subtitle;
 		$scope.avatarlink = 'http://www.gravatar.com/avatar/' + data.avatarhash + '?s=100';
 		$rootScope.blog = data
 	});
