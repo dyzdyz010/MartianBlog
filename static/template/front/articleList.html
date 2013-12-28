@@ -1,7 +1,7 @@
 <div class="content" ng-repeat="article in articles | orderBy:'date':true">
 	<div class="separator-top"></div>
 	<h2><a ui-sref="front.detail({articleId: article.id})">{{article.title}}</a></h2>
-	<h5>{{article.date | calendar}} | Tags: {{article.tags}} | Author: {{article.author}}</h5>
+	<h5><i class="fa fa-calendar"></i> {{article.date | calendar}} | <i class="fa fa-tags"></i> {{article.tags}} | <i class="fa fa-user"></i> {{article.author}}</h5>
 	<p ng-bind-html="article.content | markdown"></p>
 	<div class="separator-bottom"></div>
 </div>

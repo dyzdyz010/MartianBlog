@@ -1,0 +1,8 @@
+/* Base variables and mixins */
+
+
+$font-color: white;
+
+@mixin fonts {
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
