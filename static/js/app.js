@@ -3,6 +3,7 @@
 // App Module
 
 var app = angular.module('martianblog', ['ui.router', 'martianblogFilters', 'notifications']);
+
 app.config(['$stateProvider', function ($stateProvider) {
 	$stateProvider.
 	state('front', {

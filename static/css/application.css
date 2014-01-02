@@ -126,9 +126,9 @@ header {
 /* line 73, ../sass/_print.scss */
 footer {
   margin-top: 30px;
-  margin-bottom: -40px;
   text-align: center; }
-  /* line 78, ../sass/_print.scss */
+  /* line 77, ../sass/_print.scss */
   footer p {
+    margin-bottom: -20px;
     right: 50%;
     left: 50%; }
