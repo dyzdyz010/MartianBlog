@@ -21,7 +21,7 @@ body {
   -webkit-background-size: cover; }
 
 /* line 22, ../sass/_screen.scss */
-.content {
+.article {
   position: relative;
   margin-top: 50px;
   margin-right: 2%;
@@ -29,7 +29,7 @@ body {
   padding: 1.5em;
   line-height: 2em; }
   /* line 30, ../sass/_screen.scss */
-  .content .separator-top {
+  .article .separator-top {
     position: absolute;
     top: 0;
     right: 0;
@@ -42,7 +42,7 @@ body {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px; }
   /* line 44, ../sass/_screen.scss */
-  .content .separator-bottom {
+  .article .separator-bottom {
     position: absolute;
     right: -3px;
     bottom: 0;
@@ -53,6 +53,10 @@ body {
     border-top: none;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px; }
+
+/* line 58, ../sass/_screen.scss */
+form {
+  margin: 0 auto; }
 
 /* Base variables and mixins */
 /* line 4, ../sass/_print.scss */
@@ -82,8 +86,16 @@ header {
     border-radius: 50%;
     vertical-align: top; }
 
-/* line 32, ../sass/_print.scss */
-.content a {
+/* line 34, ../sass/_print.scss */
+.article .article-title a:hover {
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  text-decoration: none;
+  color: #df234f; }
+/* line 41, ../sass/_print.scss */
+.article .article-content a {
   color: white;
   margin-right: 5px;
   margin-left: 5px;
@@ -92,42 +104,43 @@ header {
   -moz-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out; }
-  /* line 33, ../sass/_print.scss */
-  .content a:before {
+  /* line 42, ../sass/_print.scss */
+  .article .article-content a:before {
     content: "\f08e";
     font-family: FontAwesome; }
-  /* line 44, ../sass/_print.scss */
-  .content a:hover {
+  /* line 53, ../sass/_print.scss */
+  .article .article-content a:hover {
     -webkit-transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     -o-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
-    text-decoration: none; }
-/* line 50, ../sass/_print.scss */
-.content code {
+    text-decoration: none;
+    color: #df234f; }
+/* line 57, ../sass/_print.scss */
+.article .article-content code {
   margin-right: 5px;
   margin-left: 5px;
   padding: 0.2em 0.3em;
   border: 1px dashed white;
   border-radius: 2px; }
-/* line 58, ../sass/_print.scss */
-.content pre {
+/* line 65, ../sass/_print.scss */
+.article .article-content pre {
   display: block;
   overflow: auto;
   word-wrap: normal;
   white-space: pre;
   background-color: #23241f; }
-  /* line 65, ../sass/_print.scss */
-  .content pre code {
+  /* line 72, ../sass/_print.scss */
+  .article .article-content pre code {
     display: inline-block;
     width: auto;
     border: none; }
 
-/* line 73, ../sass/_print.scss */
+/* line 82, ../sass/_print.scss */
 footer {
   margin-top: 30px;
   text-align: center; }
-  /* line 77, ../sass/_print.scss */
+  /* line 86, ../sass/_print.scss */
   footer p {
     margin-bottom: -20px;
     right: 50%;

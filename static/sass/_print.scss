@@ -28,46 +28,55 @@ header {
 	}
 }
 
-.content {
-	a {
-		&:before {
-			content: "\f08e";
-			font-family: FontAwesome;
+.article {
+	.article-title {
+		a {
+			&:hover {
+				@include link-hover;
+			}
 		}
-		color: $font-color;
-		margin-right: 5px;
-		margin-left: 5px;
-		padding: 0.2em 0.3em;
-		// text-decoration: none;
-		@include transition(all 0.1s ease-in-out);
+	}
 
-		&:hover {
+	.article-content{
+		a {
+			&:before {
+				content: "\f08e";
+				font-family: FontAwesome;
+			}
+			color: $font-color;
+			margin-right: 5px;
+			margin-left: 5px;
+			padding: 0.2em 0.3em;
+			// text-decoration: none;
 			@include transition(all 0.1s ease-in-out);
-			text-decoration: none;
-		// @include text-shadow(0 0 20px #999);
+	
+			&:hover {
+				@include link-hover;
+			}
 		}
-	}
-	code {
-		margin-right: 5px;
-		margin-left: 5px;
-		padding: 0.2em 0.3em;
-		border: 1px dashed white;
-		border-radius: 2px;
-	}
-	
-	pre {
-		display: block;
-		overflow: auto;
-		word-wrap: normal;
-		white-space: pre;
-		background-color: #23241f;
-	
 		code {
-			display: inline-block;
-			width: auto;
-			border: none;
+			margin-right: 5px;
+			margin-left: 5px;
+			padding: 0.2em 0.3em;
+			border: 1px dashed white;
+			border-radius: 2px;
 		}
-	}
+		
+		pre {
+			display: block;
+			overflow: auto;
+			word-wrap: normal;
+			white-space: pre;
+			background-color: #23241f;
+		
+			code {
+				display: inline-block;
+				width: auto;
+				border: none;
+			}
+		}
+		}
+
 }
 	
 footer {

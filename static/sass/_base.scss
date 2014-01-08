@@ -6,3 +6,9 @@ $font-color: white;
 @mixin fonts {
 	font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
+
+@mixin link-hover {
+	@include transition(all 0.1s ease-in-out);
+	text-decoration: none;
+	color: #df234f;
+}

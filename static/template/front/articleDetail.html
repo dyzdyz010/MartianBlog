@@ -1,7 +1,7 @@
-<div class="content">
+<div class="article">
 	<h2>{{article.title}}</h2>
 	<h5>{{article.date | calendar}} | Tags: {{article.tags}} | Author: {{article.author}}</h5>
-	<p ng-bind-html="article.content | markdown"></p>
+	<p class="article-content" ng-bind-html="article.content | markdown"></p>
 
 
 	<!-- Disqus -->
