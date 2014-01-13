@@ -30,6 +30,11 @@ app.config(['$stateProvider', function ($stateProvider) {
 		controller: "AdminCtrl",
 		data: {"user": {}}
 	}).
+	state('admin.login', {
+		url: "/login",
+		templateUrl: "static/template/admin/login.html",
+		controller: "AdminLoginCtrl"
+	}).
 	// Admin dashboard page
 	state('admin.dashboard', {
 		url: "/dashboard",
@@ -50,11 +55,6 @@ app.config(['$stateProvider', function ($stateProvider) {
 		url: "/articles/edit",
 		templateUrl: "static/template/admin/articleEdit.html",
 		controller: "AdminArticleEditCtrl"
-	}).
-	state('admin.login', {
-		url: "/login",
-		templateUrl: "static/template/admin/login.html",
-		controller: "AdminLoginCtrl"
 	});
 }]);
 

@@ -39,16 +39,16 @@ header {
 
 	.article-content{
 		a {
+			// text-decoration: none;
+			@include transition(all 0.1s ease-in-out);
+			margin-right: 5px;
+			margin-left: 5px;
+			padding: 0.2em 0.3em;
+			color: $font-color;
 			&:before {
 				content: "\f08e";
 				font-family: FontAwesome;
 			}
-			color: $font-color;
-			margin-right: 5px;
-			margin-left: 5px;
-			padding: 0.2em 0.3em;
-			// text-decoration: none;
-			@include transition(all 0.1s ease-in-out);
 	
 			&:hover {
 				@include link-hover;
@@ -65,9 +65,9 @@ header {
 		pre {
 			display: block;
 			overflow: auto;
-			word-wrap: normal;
-			white-space: pre;
 			background-color: #23241f;
+			white-space: pre;
+			word-wrap: normal;
 		
 			code {
 				display: inline-block;
@@ -84,8 +84,8 @@ footer {
 	text-align: center;
 
 	p {
-		margin-bottom: -20px;
 		right: 50%;
 		left: 50%;
+		margin-bottom: -20px;
 	}
-}	
+}

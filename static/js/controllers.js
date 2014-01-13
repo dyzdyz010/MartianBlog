@@ -39,6 +39,31 @@ function AdminCtrl ($scope, $http, $state, $rootScope) {
 	});
 }
 
+function AdminLoginCtrl ($scope, $http, $state, $rootScope) {
+	if ($rootScope.user != undefined) {
+		$state.transitionTo('admin.dashboard');
+	}
+
+	$http.get('/admin/user').success(function (data) {
+		if (data.code == 404) {
+			$state.transitionTo('admin.login');
+		} else if (data.code == 200) {
+			$rootScope.user = data.data;
+		}
+	});
+
+	$scope.login = function () {
+		var user = {email: $scope.user.email, password: $scope.user.password};
+		$http.post('/admin/user/login', user).success(function (data) {
+			console.log(data);
+			if (data.code == 200) {
+				$rootScope.user = data.data;
+				$state.transitionTo('admin.dashboard');
+			};
+		});
+	}
+}
+
 function DashboardCtrl ($scope, $http, $state, $rootScope) {
 	console.log($rootScope.user);
 	if ($rootScope.user == undefined) {
@@ -156,17 +181,4 @@ function AdminArticleEditCtrl ($scope, $http, $stateParams, $state, $notificatio
 
 		return date;
 	};
-}
-
-function AdminLoginCtrl ($scope, $http, $state, $rootScope) {
-	$scope.login = function () {
-		var user = {email: $scope.user.email, password: $scope.user.password};
-		$http.post('/admin/user/login', user).success(function (data) {
-			console.log(data);
-			if (data.code == 200) {
-				$rootScope.user = data.data;
-				$state.transitionTo('admin.dashboard');
-			};
-		});
-	}
 }

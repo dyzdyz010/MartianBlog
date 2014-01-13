@@ -15,10 +15,13 @@ body {
 
 /* line 15, ../sass/_screen.scss */
 .round {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   display: inline-block;
   padding: 20px;
-  background-image: url("/static/img/round-border.svg");
-  -webkit-background-size: cover; }
+  background-image: url("/static/img/round-border.svg"); }
 
 /* line 22, ../sass/_screen.scss */
 .article {
@@ -58,6 +61,27 @@ body {
 form {
   margin: 0 auto; }
 
+/* line 62, ../sass/_screen.scss */
+#login {
+  -webkit-border-radius: 5px 5px;
+  -moz-border-radius: 5px / 5px;
+  border-radius: 5px / 5px;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-image: url("/static/img/login-bg.png"); }
+  /* line 67, ../sass/_screen.scss */
+  #login .pure-u-1 {
+    text-align: center; }
+  /* line 71, ../sass/_screen.scss */
+  #login button {
+    width: 114px;
+    height: 114px;
+    border: none;
+    background-color: transparent;
+    color: white; }
+
 /* Base variables and mixins */
 /* line 4, ../sass/_print.scss */
 body {
@@ -96,15 +120,15 @@ header {
   color: #df234f; }
 /* line 41, ../sass/_print.scss */
 .article .article-content a {
-  color: white;
-  margin-right: 5px;
-  margin-left: 5px;
-  padding: 0.2em 0.3em;
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out; }
-  /* line 42, ../sass/_print.scss */
+  transition: all 0.1s ease-in-out;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 0.2em 0.3em;
+  color: white; }
+  /* line 48, ../sass/_print.scss */
   .article .article-content a:before {
     content: "\f08e";
     font-family: FontAwesome; }
@@ -127,9 +151,9 @@ header {
 .article .article-content pre {
   display: block;
   overflow: auto;
-  word-wrap: normal;
+  background-color: #23241f;
   white-space: pre;
-  background-color: #23241f; }
+  word-wrap: normal; }
   /* line 72, ../sass/_print.scss */
   .article .article-content pre code {
     display: inline-block;
@@ -142,6 +166,6 @@ footer {
   text-align: center; }
   /* line 86, ../sass/_print.scss */
   footer p {
-    margin-bottom: -20px;
     right: 50%;
-    left: 50%; }
+    left: 50%;
+    margin-bottom: -20px; }

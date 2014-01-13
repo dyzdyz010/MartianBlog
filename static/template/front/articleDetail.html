@@ -1,6 +1,6 @@
 <div class="article">
 	<h2>{{article.title}}</h2>
-	<h5>{{article.date | calendar}} | Tags: {{article.tags}} | Author: {{article.author}}</h5>
+	<h5><i class="fa fa-calendar fa-1"></i> {{article.date | calendar}} | <i class="fa fa-tags"></i> {{article.tags}} | <i class="fa fa-user"></i> {{article.author}}</h5>
 	<p class="article-content" ng-bind-html="article.content | markdown"></p>
 
 

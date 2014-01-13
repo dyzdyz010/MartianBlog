@@ -3,7 +3,13 @@
 		<input class="pure-u-1" type="text" ng-model="article.title" placeholder="Title" required>
 		<div class="pure-u-3-5">
 			<textarea class="pure-u-1" ng-model="article.content" placeholder="Content" required></textarea>
-			<div class="pure-u-1 content" ng-bind-html="article.content | markdown"></div>
+			<div class="pure-u-1 article">
+				<div class="separator-top"></div>
+				<h2>{{article.title}}</h2>
+				<h5><i class="fa fa-calendar fa-1"></i> {{article.date | calendar}} | <i class="fa fa-tags"></i> {{article.tags}} | <i class="fa fa-user"></i> {{article.author}}</h5>
+				<div class="article-content" ng-bind-html="article.content | markdown"></div>
+				<div class="separator-bottom"></div>
+			</div>
 		</div>
 		<div class="pure-u-1-5">
 			<input class="pure-u-1" type="text" ng-model="date" placeholder="Date(YYYY-MM-DD, Optional)">

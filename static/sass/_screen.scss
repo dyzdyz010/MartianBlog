@@ -13,10 +13,10 @@ body {
 }
 
 .round {
+	@include background-size(cover);
 	display: inline-block;
 	padding: 20px;
 	background-image: url("/static/img/round-border.svg");
-	-webkit-background-size: cover;
 }
 
 .article {
@@ -57,4 +57,22 @@ body {
 
 form {
 	margin: 0 auto;
+}
+
+#login {
+	@include border-radius(5px, 5px);
+	@include background-size(contain);
+	background-image: url("/static/img/login-bg.png");
+	
+	.pure-u-1 {
+		text-align: center;
+	}
+
+	button {
+		width: 114px;
+		height: 114px;
+		border: none;
+		background-color: transparent;
+		color: white;
+	}
 }
